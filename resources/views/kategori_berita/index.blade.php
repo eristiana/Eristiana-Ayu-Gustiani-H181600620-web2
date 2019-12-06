@@ -14,6 +14,7 @@
                          <td >Nama</td>
                          <td>Users id</td>
                          <td >Create</td>
+                         <td >Update</td>
                          <td>Aksi</td>
                      </tr>
 
@@ -24,10 +25,20 @@
                         <td>{!! $item->nama !!}</td>
                         <td>{!! $item->users_id !!}</td>
                         <td>{!! $item->created_at->format('d/m/Y H:i:s') !!}</td>
+                        <td>{!! $item->updated_at->format('d/m/Y H:i:s') !!}</td>
                         <td>
                             <a href="{!! route('kategori_berita.show',[$item->id]) !!}"class="btn btn-sm btn-success">
                             Lihat
                             </a>
+
+                            <a href="{!! route('kategori_berita.edit',[$item->id]) !!}"class="btn btn-sm btn-warning">
+                            Ubah
+                            </a>
+
+                            {!! Form::open(['route' => ['kategori_berita.destroy',  $item-> id], 'method'=>'delete']) !!}
+                            {!! Form::submit ('Hapus', ['class'=>'btn btn-sm btn-danger','onclick'=>"return confirm ('Apakah anda yakin menghapus data ini?')"]); !!}
+                            {!! Form::close() !!}
+
                         </td>
                     </tr>
 

@@ -21,6 +21,10 @@ class KategoriArtikelController extends Controller
         //$kategoriArtikel=KategoriArtikel::where('id',$id)->first();//select * from kategori_artikel where id=$id limit 1
         $kategoriArtikel=KategoriArtikel::find($id);
 
+        if(empty($kategoriArtikel)){
+            return redirect(route('kategori_artikel.index'));
+        }
+
         return view('kategori_artikel.show',compact('kategoriArtikel'));
     }
 
@@ -34,5 +38,43 @@ class KategoriArtikelController extends Controller
         KategoriArtikel::create($input);
 
         return redirect(route('kategori_artikel.index'));
+    }
+    public function edit($id){
+        $kategoriArtikel=KategoriArtikel::find($id);
+
+        if(empty($kategoriArtikel)){
+            return redirect(route('kategori_artikel.index'));
+        }
+        return view('kategori_artikel.edit',compact ('kategoriArtikel'));
+    }
+    public function update($id,Request $request){
+        $kategoriArtikel=KategoriArtikel::find($id);
+        $input= $request->all();
+
+        if(empty($kategoriArtikel)){
+            return redirect(route('kategori_artikel.index'));
+        }
+        $kategoriArtikel->update($input);
+
+        return redirect(route('kategori_artikel.index'));        
+    }
+    public function destroy($id){
+        $kategoriArtikel=KategoriArtikel::find($id);
+
+        if(empty($kategoriArtikel)){
+            return redirect(route('kategori_artikel.index'));
+        } 
+        $kategoriArtikel->delete();
+        return redirect(route('kategori_artikel.index'));
+    
+    }
+    public function trash(){
+        //Eloquent => ORM (Object Relational Mapping)
+        $listKategoriArtikel=KategoriArtikel::onlyTrashed(); //select * from kategori_artikel
+
+        //blade
+        return view('kategori_artikel.index',compact('listKategoriArtikel'));
+
+
     }
 }

@@ -22,6 +22,10 @@ class ArtikelController extends Controller
         //$Artikel=Artikel::where('id',$id)->first();//select * from artikel where id=$id limit 1
         $Artikel=Artikel::find($id);
 
+        if(empty($Artikel)){
+            return redirect(route('artikel.index'));
+        }
+
         return view('artikel.show',compact('Artikel'));
     }
 
@@ -38,4 +42,32 @@ class ArtikelController extends Controller
 
         return redirect(route('artikel.index'));
     }
+    public function edit($id){
+        $Artikel=Artikel::find($id);
+
+        if(empty($Artikel)){
+            return redirect(route('artikel.index'));
+        }
+        return view('artikel.edit',compact ('Artikel'));
+    }
+    public function update($id,Request $request){
+        $Artikel=Artikel::find($id);
+        $input= $request->all();
+
+        if(empty($Artikel)){
+            return redirect(route('artikel.index'));
+        }
+        $Artikel->update($input);
+
+        return redirect(route('artikel.index'));
+    }
+    public function destroy($id){
+        $Artikel=Artikel::find($id);
+
+        if(empty($Artikel)){
+            return redirect(route('artikel.index'));
+        } 
+        $Artikel->delete();
+        return redirect(route('artikel.index'));
+}
 }

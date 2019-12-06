@@ -13,6 +13,8 @@ class KategoriGaleri extends Model
     ];
     
     protected $casts=[
+        'deleted_at'=>'datetime'
+
 
     ];
 }

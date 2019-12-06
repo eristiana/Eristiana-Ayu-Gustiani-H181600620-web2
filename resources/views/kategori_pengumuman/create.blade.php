@@ -5,11 +5,13 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Tambah Kategori Galeri</div>
+                <div class="card-header">Tambah Kategori Pengumuman</div>
 
                 <div class="card-body">
-                    <form method ="post"action="{!! route('kategori_galeri.store') !!}">
-                        @include('kategori_galeri.form')
+                {!! Form::open(['route' => 'kategori_pengumuman.store', 'method' => 'post']) !!}
+                        @include('kategori_pengumuman.form')
+                    {!! Form::close() !!}
+                    
                     </form>
                 </div>
             </div>

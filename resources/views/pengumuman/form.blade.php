@@ -15,11 +15,11 @@
 </div>
 
 <div class="form-group row">
-     <label for="kategori_berita_id" class="col-md-2 col-form-label text-md-right">{{ __('kategoriBerita') }}</label>
+     <label for="kategori_pengumuman_id" class="col-md-2 col-form-label text-md-right">{{ __('kategoriPengumuman') }}</label>
 
      <div class="col-md-10">
-            {!! Form::select('kategori_berita_id', $Berita,null,['class'=>'form-control','required'] ) !!}
-         @error('kategori_berita_id')
+            {!! Form::select('kategori_pengumuman_id', $kategoriPengumuman,null,['class'=>'form-control','required'] ) !!}
+         @error('kategori_pengumuman_id')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>
@@ -43,14 +43,15 @@
 
 
 
-    {!! Form::hidden('users_id', Auth::id() ); !!}
+        {!! Form::hidden('users_id', Auth::id() ); !!}
+
 
             <div class="col-md-6">
                             <div class="col-md-3 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Simpan Data') }}
                                 </button>
-                                <a  href="{!! route('berita.index') !!}" class="btn btn-danger">
+                                <a  href="{!! route('pengumuman.index') !!}" class="btn btn-danger">
                                     {{ __('Batal') }}
                                 </a>
               

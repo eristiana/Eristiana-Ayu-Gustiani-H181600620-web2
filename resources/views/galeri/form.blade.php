@@ -1,12 +1,12 @@
 @csrf
 
 <div class="form-group row">
-     <label for="judul" class="col-md-2 col-form-label text-md-right">{{ __('Judul') }}</label>
+     <label for="nama" class="col-md-2 col-form-label text-md-right">{{ __('Nama') }}</label>
 
      <div class="col-md-10">
-         <input id="judul" type="text" class="form-control @error('judul') is-invalid @enderror" name="judul" value="{{ old('judul') }}" required autofocus>
+         <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') }}" required autofocus>
 
-         @error('judul')
+         @error('nama')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>
@@ -15,10 +15,38 @@
 </div>
 
 <div class="form-group row">
-     <label for="kategori_galeri_id" class="col-md-2 col-form-label text-md-right">{{ __('Kategori galeri') }}</label>
+     <label for="keterangan" class="col-md-2 col-form-label text-md-right">{{ __('Keterangan') }}</label>
 
      <div class="col-md-10">
-            {!! Form::select('kategori_galeri_id', $kategoriGaleri,null,['class'=>'form-control','required'] ) !!}
+         <input id="keterangan" type="text" class="form-control @error('keterangan') is-invalid @enderror" name="keterangan" value="{{ old('keterangan') }}" required autofocus>
+
+         @error('keterangan')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+         @enderror
+    </div>
+</div>
+
+<div class="form-group row">
+     <label for="path" class="col-md-2 col-form-label text-md-right">{{ __('Path') }}</label>
+
+     <div class="col-md-10">
+         <input id="path" type="text" class="form-control @error('path') is-invalid @enderror" name="nama" value="{{ old('path') }}" required autofocus>
+
+         @error('path')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+         @enderror
+    </div>
+</div>
+
+<div class="form-group row">
+     <label for="kategori_galeri_id" class="col-md-2 col-form-label text-md-right">{{ __('kategoriGaleri') }}</label>
+
+     <div class="col-md-10">
+            {!! Form::select('kategori_galeri_id', $Galeri,null,['class'=>'form-control','required'] ) !!}
          @error('kategori_galeri_id')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -27,8 +55,6 @@
     </div>
 </div>
 
-<div class="form-group row">
-     <label for="isi" class="col-md-2 col-form-label text-md-right">{{ __('Isi') }}</label>
 
      <div class="col-md-10">
             {!! Form::textarea('isi',null,['class'=>'form-control']); !!}
@@ -43,7 +69,7 @@
 
 
 
-<input id="users_id" type="hidden" class="form-control @error('users_id') is-invalid @enderror" name="users_id" value="{{ Auth::id() }}" required autofocus>
+        {!! Form::hidden('users_id', Auth::id() ); !!}
 
 
             <div class="col-md-6">

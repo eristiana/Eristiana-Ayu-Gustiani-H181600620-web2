@@ -15,7 +15,7 @@
 </div>
 
 <div class="form-group row">
-     <label for="kategori_artikel_id" class="col-md-2 col-form-label text-md-right">{{ __('Kategori artikel') }}</label>
+     <label for="kategori_artikel_id" class="col-md-2 col-form-label text-md-right">{{ __('kategoriArtikel') }}</label>
 
      <div class="col-md-10">
             {!! Form::select('kategori_artikel_id', $kategoriArtikel,null,['class'=>'form-control','required'] ) !!}
@@ -43,7 +43,7 @@
 
 
 
-<input id="users_id" type="hidden" class="form-control @error('users_id') is-invalid @enderror" name="users_id" value="{{ Auth::id() }}" required autofocus>
+        {!! Form::hidden('users_id', Auth::id() ); !!}
 
 
             <div class="col-md-6">
